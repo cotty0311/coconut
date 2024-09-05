@@ -5,6 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} - {{ site.title }}</title>
   <link rel="stylesheet" href="/assets/style.css">
+  <script>
+    // JavaScript 函數來提示用戶輸入密語
+    function checkPassword() {
+      // 檢查 localStorage 是否已經保存了密語正確的標誌
+      if (localStorage.getItem('authenticated') === 'true') {
+        return; // 已經認證過，直接進入網站
+      }
+
+      var password = prompt("請輸入密語：");
+
+      if (password === "slooth") {
+        alert("密語正確，歡迎進入網站！");
+        // 設定認證標誌，密語正確
+        localStorage.setItem('authenticated', 'true');
+      } else {
+        alert("密語錯誤，將跳轉到 Google");
+        window.location.href = "https://www.google.com";
+      }
+    }
+    // 當頁面加載時運行該函數
+    window.onload = checkPassword;
+  </script>
 </head>
 <body>
   <div class="container">
